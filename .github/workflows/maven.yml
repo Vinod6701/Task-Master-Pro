@@ -49,9 +49,13 @@ jobs:
     - name: build Docker image
       run: |
         docker build -t vinod/taskmaster:latest .
-
+  
     - name: Trivy scan
       run: trivy image --format table -o image.html vinod/taskmaster:latest
+
+    - name: push Docker image
+      run: |
+        docker push vinod/taskmaster:latest
       
       
 
